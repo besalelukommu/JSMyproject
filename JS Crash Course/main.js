@@ -1,3 +1,25 @@
+/*
+INDEX OF CONTENT
+
+Line no     Title
+17          Data types
+37          Concatination
+41          Template String
+50          Arrays
+85          For loop
+90          While
+133         forEach
+141         Map
+148         Fileter
+162        IF
+172         Ternary
+189         Functions
+200         oops
+238         DOM
+
+*/
+
+
 //console.log('Hello world !!');
 //console.error('This is error');
 //console.warn('This is warning');
@@ -174,3 +196,93 @@ Numbers(7, 4);
 // Advance functions
 const Numbers1 = (num1, num2) => num1 + num2;
 console.log(Numbers1(5,4));
+
+
+// object oriented programming
+// Constractor function
+ function Person(firstName, lastName, dob){
+
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.dob = new Date(dob);
+    this.getBirthYear = function(){
+        return this.dob.getFullYear();
+    }
+    this.getFullName = function(){
+        //return this.firstName +" "+ this.lastName;
+        return `${this.firstName}  ${this.lastName}`;
+    }
+ }
+
+ //Instantiate object
+ const person1 = new Person('John', 'Doe', '1-2-1983');
+ const person2 = new Person('Mary', 'Smith', '5-2-1990');
+
+ console.log(person2.firstName);
+ console.log(person1.dob);
+ console.log(person1.getBirthYear());
+ console.log(person2.getFullName());
+
+ // proto type example
+ Person.prototype.setFullname = function(){
+    return `${this.firstName}  ${this.lastName}`;
+ }
+
+ Person.prototype.setBirthYear = function(){
+    return this.dob.getFullYear();
+ }
+
+ console.log(person2)
+
+ // Class
+ class PersonClass {
+     constructor(){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = new Date(dob);
+     }
+
+     getBirthYear(){
+        return this.dob.getFullYear(); 
+     }
+     getFullName(){
+        return `${this.firstName}  ${this.lastName}`;  
+     }
+ }
+
+ //Instantiate object
+ const person3 = new Person('John', 'Mouse ', '1-2-1983');
+ const person4 = new Person('Mick', 'Smith', '5-2-1990');
+
+ console.log(person4)
+
+
+ // DOM Example
+
+ const myForm = document.querySelector('#my-form');
+ const nameInput = document.querySelector('#name');
+ const emailInput = document.querySelector('#email');
+ const msg = document.querySelector('#msg');
+ const usersList = document.querySelector('#user');
+
+ myForm.addEventListener('submit', onSubmit);
+
+ function onSubmit(e){
+     e.preventDefault();
+     
+     if(nameInput.value === '' || emailInput.value === ''){
+         msg.classList.add('error');
+         msg.innerHTML ='Please enter all fields';
+
+         setTimeout(() => msg.remove(), 3000)
+     }else{
+         const li =document.createElement('li');
+         li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
+         usersList.appendChild(li);
+
+         // clear fields
+         nameInput.value='';
+         emailInput.value='';
+     }
+ }
+ 
